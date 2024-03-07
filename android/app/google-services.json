@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "557925363472",
+    "firebase_url": "https://smsapp-1caaa-default-rtdb.firebaseio.com",
+    "project_id": "smsapp-1caaa",
+    "storage_bucket": "smsapp-1caaa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557925363472:android:2b7e1d405e914527cd7f95",
+        "android_client_info": {
+          "package_name": "com.example.sms"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwSxPAQJoSOt8NGdU9wiYfCsxXN3X2dHI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

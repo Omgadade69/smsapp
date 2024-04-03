@@ -88,19 +88,19 @@ class RealtimeChatUpdate extends StatelessWidget {
 }
 
 // Ink(
-//     decoration: BoxDecoration(
-//       color: kSpaceCadet,
-//       borderRadius: BorderRadius.circular(20),
-//     ),
-//     child: ListTile(
-//       // tileColor: kSpaceCadet,
-//       title: Text(
-//         document.data()['sender'],
-//         style: TextStyle(fontSize: 15),
-//       ),
-//       subtitle: Text(
-//         document.data()['message'],
-//         style: TextStyle(fontSize: 17),
-//       ),
-//     ),
-// ),
+ //    decoration: BoxDecoration(
+  //     color: kSpaceCadet,
+  //     borderRadius: BorderRadius.circular(20),
+  // ),
+ //    child: ListTile(
+  //     // tileColor: kSpaceCadet,
+ //     title: Text(
+ //        document.data()['sender'],
+ //        style: TextStyle(fontSize: 15),
+  //     ),
+ //      subtitle: Text(
+ //        document.data()['message'],
+  //       style: TextStyle(fontSize: 17),
+ //      ),
+   //  ),
+ //),

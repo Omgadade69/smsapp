@@ -22,6 +22,8 @@ import 'package:sms/screens/home/modules/voting/voting.dart';
 import 'package:sms/screens/home/modules/chat/chat.dart';
 import 'package:sms/screens/home/admin/residents.dart';
 
+import 'package:sms/screens/home/modules/payment/payment.dart';
+
 Map<String, Widget Function(BuildContext)> routes = <String, WidgetBuilder>{
   Chat.id: (context) => Chat(),
   Profile.id: (context) => Profile(),
@@ -35,6 +37,8 @@ Map<String, Widget Function(BuildContext)> routes = <String, WidgetBuilder>{
   Translate.id: (context) => Translate(title: '', notice: '', outputLanguage: '',),
   Voting.id: (context) => Voting(),
   AddVoting.id: (context) => AddVoting(),
+
+  //BillingDialogBox.id: (context) => BillingDialogBox(providerName: '', categoryName: '', charges: '', selectedDate: null, email: '', seekername: '', phonenumer: '',),
   //Complaint.id: (context) => Complaint(),
   //AddComplaint.id: (context) => AddComplaint(),
   Contacts.id: (context) => Contacts(),

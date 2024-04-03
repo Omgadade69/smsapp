@@ -23,7 +23,7 @@ class ReusableFlatButton extends StatelessWidget {
           ),
         );
       },
-      child: Text(outputLanguage!),
+      child: Text(outputLanguage),
     );
   }
 }

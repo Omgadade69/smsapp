@@ -112,7 +112,7 @@ class RealTimeVisitorUpdate extends StatelessWidget {
                         style: TextStyle(color: kMediumAquamarine),
                       ),
                       onTap: () {
-                        launch("tel://" + document.data()!['mobileNo']);
+                        launchUrl(("tel://" + document.data()!['mobileNo']) as Uri);
                       },
                     ),
                     ListTile(

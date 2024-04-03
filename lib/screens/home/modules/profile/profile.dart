@@ -74,7 +74,7 @@ class _ProfileState extends State<Profile> {
                       child: CircleAvatar(
                         radius: 65.0,
                         //backgroundColor: Colors.white,
-                        backgroundImage: snapshot.data!['profile_picture'] == ''
+                        backgroundImage: snapshot.data!['profile_picture'] == null
                             ? AssetImage(
                                 'assets/images/default_profile_pic.jpg') as ImageProvider
                             : NetworkImage(snapshot.data!['profile_picture']),
@@ -135,8 +135,8 @@ class _ProfileState extends State<Profile> {
                     ),
                     ReusableProfileTile(
                       label: 'Name',
-                      //value: AuthService().userName(),
-                      value: user.name as String,
+                      value: AuthService().userName(),
+                      //value: user.name as String,
                       onpress: () {
                         Navigator.pushNamed(context, EditName.id);
                       },

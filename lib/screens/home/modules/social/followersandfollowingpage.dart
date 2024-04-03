@@ -88,13 +88,13 @@ class _FollowersAndFollowingState extends State<FollowersAndFollowing> {
         ),
         body: TabBarView(
           children: [
-            followersdisplay == null
+            followersdisplay == 0
                 ? Center(child: Text('No users to display'))
                 : FollowersandFollowingdisplaytile(
                     displaytile: followersdisplay,
                     following: followingUid,
                   ),
-            followingdisplay == null
+            followingdisplay == 0
                 ? Center(child: Text('No users to display'))
                 : FollowersandFollowingdisplaytile(
                     displaytile: followingdisplay,

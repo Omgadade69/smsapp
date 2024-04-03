@@ -8,7 +8,7 @@ class ReusableTextField extends StatelessWidget {
   final VoidCallback? onTap;
   final Icon? prefixIcon;
   final int? maxLength;
-  final VoidCallback onChanged;
+  final void Function(String?) onChanged;
   final bool enabled;
   ReusableTextField({
     required this.labelText,
@@ -30,7 +30,7 @@ class ReusableTextField extends StatelessWidget {
       keyboardType: keyboardType,
       initialValue: initialValue,
       maxLength: maxLength,
-      onChanged: onChanged as void Function(String)?,
+      onChanged: onChanged ,
       decoration: InputDecoration(
         prefixIcon: prefixIcon,
         labelText: labelText,

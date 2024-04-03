@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
+  // From this class further task carried out
   @override
   Widget build(BuildContext context) {
     return StreamProvider<CurrentUser?>.value(value: AuthService().user, initialData: null,

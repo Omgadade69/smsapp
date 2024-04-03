@@ -17,7 +17,7 @@ class UploadPage extends StatefulWidget {
 class _UploadPageState extends State<UploadPage> {
   final StorageService storage = StorageService();
   String caption = '';
-  late File photo;
+  File? photo;
   late String photoPath;
   final picker = ImagePicker();
 
@@ -91,7 +91,7 @@ class _UploadPageState extends State<UploadPage> {
               ),
               onPressed: () {
                 storage.uploadPhoto(photoPath, user.uid, caption,
-                    widget.username, user.profilePicture as String);
+                    widget.username, user.profilePicture as String );
                 Navigator.pop(context);
               },
             ),
@@ -102,7 +102,7 @@ class _UploadPageState extends State<UploadPage> {
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: ListView(
           children: [
-            //  Image.file(photo),
+              //Image.file(photo!),
             TextField(
               onChanged: (value) {
                 caption = value;
@@ -125,11 +125,7 @@ class _UploadPageState extends State<UploadPage> {
                 addPhoto();
               },
             ),
-            photo == null
-                ? SizedBox(
-                    height: 0,
-                  )
-                : Image.file(photo),
+            if (photo != null) Image.file(photo!),
           ],
         ),
       ),

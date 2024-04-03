@@ -80,7 +80,7 @@ class _HomePageSocialState extends State<HomePageSocial> {
             return ListView(
               children: photosSnapshot.data!.docs
                   .map((DocumentSnapshot<Map<String, dynamic>> document) {
-                return likes == null
+                return likes == 0
                     ? Loading()
                     : ReusablePostDisplayTile(
                         document: document,

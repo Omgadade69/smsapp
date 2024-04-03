@@ -48,7 +48,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     final user = Provider.of<CurrentUser>(context);
     String uid;
-    widget.uid == null ? uid = user.uid : uid = widget.uid;
+    widget.uid == "" ? uid = user.uid : uid = widget.uid;
     DocumentReference<Map<String, dynamic>> moduleSocial =
         FirebaseFirestore.instance.collection('module_social').doc(uid);
     Query<Map<String, dynamic>> moduleSocialphotos = FirebaseFirestore.instance

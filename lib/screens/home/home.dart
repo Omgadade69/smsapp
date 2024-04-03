@@ -12,6 +12,7 @@ import 'package:sms/screens/home/modules/voting/voting.dart';
 import 'package:sms/screens/home/reusableCard.dart';
 import 'package:sms/services/auth.dart';
 import 'package:sms/services/database.dart';
+import 'package:sms/screens/home/modules/payment/payment.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -20,7 +21,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final AuthService _auth = AuthService();
-  late String userType;
+   String? userType;
 
   @override
   void initState() {
@@ -102,8 +103,11 @@ class _HomeState extends State<Home> {
                         ),
                       ],
                     ),
+
+
                     Row(
                       children: [
+
                         //ReusableCard(
                           //icon: Icons.support_agent,
                           //text: 'Complaint',

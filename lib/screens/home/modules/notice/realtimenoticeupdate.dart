@@ -19,8 +19,8 @@ enum TtsState { playing, stopped, paused, continued }
 class _RealTimeNoticeUpdateState extends State<RealTimeNoticeUpdate> {
   FlutterTts flutterTts = FlutterTts();
   TtsState ttsState = TtsState.stopped;
-  late String currentPlayingDocId;
-  late String userType;
+   String? currentPlayingDocId;
+   String? userType;
   Future _speak(String notice, String docid) async {
     print(flutterTts.getLanguages);
     await flutterTts.setLanguage("hi-IN");

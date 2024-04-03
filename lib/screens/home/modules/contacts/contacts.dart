@@ -16,7 +16,7 @@ class Contacts extends StatefulWidget {
 
 class _ContactsState extends State<Contacts> {
   int _selectedIndex = 0;
-  late String userType;
+  String? userType;
 
   void _onItemTapped(int index) {
     setState(() {

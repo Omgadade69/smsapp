@@ -13,7 +13,7 @@ class Voting extends StatefulWidget {
 
 class _VotingState extends State<Voting> {
   dynamic userdata;
-  late String userType;
+   String? userType;
 
   @override
   void initState() {

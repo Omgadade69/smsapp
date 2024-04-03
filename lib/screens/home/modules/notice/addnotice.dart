@@ -26,8 +26,8 @@ class _AddNoticeState extends State<AddNotice> {
     super.initState();
     myFocusNode = FocusNode();
     if (widget.flag == 0) {
-      title = widget.editTitle!;
-      notice = widget.editNotice!;
+      title = widget.editTitle;
+      notice = widget.editNotice;
     }
   }
 

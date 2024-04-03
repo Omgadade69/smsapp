@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:sms/screens/home/modules/visitor/reusabletextfield.dart';
 import 'package:sms/screens/home/modules/visitor/showresidents.dart';
+import 'package:sms/screens/home/modules/visitor/reusabletextfield.dart';
 import 'package:sms/services/database.dart';
+import 'package:flutter/material.dart';
 import 'package:sms/shared/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/services.dart';
 
 class AddVisitor extends StatefulWidget {
   static const String id = 'add_visitor';
@@ -18,14 +19,14 @@ class AddVisitor extends StatefulWidget {
   final String docid;
   AddVisitor(
       {required this.name,
-      required this.wing,
-      required this.flatno,
-      required this.purpose,
-      required this.mobileNo,
-      this.flag,
-      this.selectedTimeIn,
-      this.selectedTimeOut,
-      required this.docid});
+        required this.wing,
+        required this.flatno,
+        required this.purpose,
+        required this.mobileNo,
+        this.flag,
+        this.selectedTimeIn,
+        this.selectedTimeOut,
+        required this.docid});
 
   @override
   _AddVisitorState createState() => _AddVisitorState();
@@ -35,11 +36,11 @@ class _AddVisitorState extends State<AddVisitor> {
   String name = '', wing = '', flatno = '', purpose = '', mobileNo = '';
   var usermobileNo = '';
   TimeOfDay selectedTimeIn = TimeOfDay.now();
-  late TimeOfDay selectedTimeOut;
+  TimeOfDay? selectedTimeOut;
 
   Future selectTimeIn(BuildContext context) async {
     TimeOfDay? picked =
-        await showTimePicker(context: context, initialTime: selectedTimeIn);
+    await showTimePicker(context: context, initialTime: selectedTimeIn);
     if (picked != null) {
       setState(() {
         selectedTimeIn = picked;
@@ -50,7 +51,7 @@ class _AddVisitorState extends State<AddVisitor> {
   Future selectTimeOut(BuildContext context) async {
     TimeOfDay? picked = await showTimePicker(
         context: context,
-        initialTime: selectedTimeOut ??   TimeOfDay(hour: 0, minute: 0) );
+        initialTime: selectedTimeOut ??    TimeOfDay(hour: 0, minute: 0) );
     if (picked != null) {
       setState(() {
         selectedTimeOut = picked;
@@ -108,10 +109,10 @@ class _AddVisitorState extends State<AddVisitor> {
               prefixIcon: Icon(Icons.perm_identity),
               initialValue: widget.flag == 0 ? widget.name : name,
               onChanged: (val) {
-                setState(() {
-                  name = val;
+                setState(()  {
+                  name = val!;
                 });
-              } as void Function(),
+              } ,
             ),
             ReusableTextField(
               labelText: 'Mobile No',
@@ -121,24 +122,24 @@ class _AddVisitorState extends State<AddVisitor> {
               maxLength: 10,
               onChanged: (val) {
                 setState(() {
-                  mobileNo = val;
+                  mobileNo = val!;
                 });
-              } as void Function(),
+              }   ,
             ),
             Row(
               children: [
                 Expanded(
                     child: ReusableTextField(
-                  labelText: wing == '' ? 'Wing' : wing,
-                  prefixIcon: Icon(Icons.apartment),
-                  initialValue: widget.flag == 0 ? widget.wing : wing,
-                  onChanged: (val) {
-                    setState(() {
-                      wing = val;
-                    });
-                  }as void Function() ,
-                  enabled: false,
-                )),
+                      labelText: wing == '' ? 'Wing' : wing,
+                      prefixIcon: Icon(Icons.apartment),
+                      initialValue: widget.flag == 0 ? widget.wing : wing,
+                      onChanged: (val) {
+                        setState(() {
+                          wing = val!;
+                        });
+                      } ,
+                      enabled: false,
+                    )),
                 SizedBox(
                   width: 10,
                 ),
@@ -148,9 +149,9 @@ class _AddVisitorState extends State<AddVisitor> {
                     initialValue: widget.flag == 0 ? widget.flatno : flatno,
                     onChanged: (val) {
                       setState(() {
-                        flatno = val;
+                        flatno = val!;
                       });
-                    }as void Function(),
+                    },
                     enabled: false,
                   ),
                 ),
@@ -163,9 +164,9 @@ class _AddVisitorState extends State<AddVisitor> {
               initialValue: widget.flag == 0 ? widget.purpose : purpose,
               onChanged: (val) {
                 setState(() {
-                  purpose = val;
+                  purpose = val!;
                 });
-              } as void Function(),
+              } ,
             ),
             SizedBox(
               height: 5,
@@ -213,19 +214,19 @@ class _AddVisitorState extends State<AddVisitor> {
                         ),
                         selectedTimeOut == null
                             ? Text(
-                                'Out  ',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.white,
-                                ),
-                              )
+                          'Out  ',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                          ),
+                        )
                             : Text(
-                                'Out  ' + selectedTimeOut.format(context),
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.white,
-                                ),
-                              ),
+                          'Out  ' + selectedTimeOut!.format(context),
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -235,15 +236,15 @@ class _AddVisitorState extends State<AddVisitor> {
             TextButton(
                 onPressed: usermobileNo != ''
                     ? () {
-                        String smsbody =
-                            '?body=You have a visitor. Visitor details are:\nName: ' +
-                                name +
-                                '\nPhone%20No: ' +
-                                mobileNo +
-                                '\nPurpose of visit: ' +
-                                purpose;
-                        launch("sms://" + usermobileNo + smsbody);
-                      }
+                  String smsbody =
+                      '?body=You have a visitor. Visitor details are:\nName: ' +
+                          name +
+                          '\nPhone%20No: ' +
+                          mobileNo +
+                          '\nPurpose of visit: ' +
+                          purpose;
+                  launchUrl(Uri.parse("sms://$usermobileNo$smsbody"));
+                }
                     : null,
                 child: Text(
                   'Send SMS',
@@ -273,7 +274,7 @@ class _AddVisitorState extends State<AddVisitor> {
                   flatno,
                   purpose,
                   selectedTimeIn.format(context),
-                  selectedTimeOut.format(context),
+                  selectedTimeOut?.format(context),
                   widget.docid);
             } else {
               if (selectedTimeOut == null) {
@@ -287,7 +288,7 @@ class _AddVisitorState extends State<AddVisitor> {
                   flatno,
                   purpose,
                   selectedTimeIn.format(context),
-                  selectedTimeOut.format(context),
+                  selectedTimeOut?.format(context),
                 );
               }
             }

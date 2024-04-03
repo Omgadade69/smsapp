@@ -12,8 +12,8 @@ class AddVoting extends StatefulWidget {
 }
 
 class _AddVotingState extends State<AddVoting> {
-  String title = '';
-  late List timer;
+  late String title;
+  List? timer;
   late DateTime dateAndTime;
   Map<String, int> participants = {};
   List<DynamicParticipants> dynamicparticipants = [
@@ -31,7 +31,7 @@ class _AddVotingState extends State<AddVoting> {
       if (dynamicparticipants[participant].controller.text != null &&
           dynamicparticipants[participant].controller.text != '') {
         participants[dynamicparticipants[participant].controller.text] = 0;
-        // participants.add(dynamicparticipants[participant].controller.text);
+       // participants.add(dynamicparticipants[participant].controller.text);
       }
     }
 
@@ -56,7 +56,10 @@ class _AddVotingState extends State<AddVoting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+
       appBar: AppBar(
+
         title: Text('Add Participants'),
         actions: [
           Builder(
@@ -216,11 +219,13 @@ class _AddVotingState extends State<AddVoting> {
                     child: timer != null
                         ? Center(
                             child: Text(
-                              timer[0] + 'h ' + timer[1] + 'm ' + (timer[2]).split('.')[0] + 's ',
+                              timer![0] + 'h ' + timer![1] + 'm ' + (timer![2]).split('.')[0] + 's ',
                               style: TextStyle(fontSize: 18),
                             ),
                           )
-                        : null as Widget,
+
+
+                        : Container(),
                   ),
                 ),
               ],
@@ -228,6 +233,7 @@ class _AddVotingState extends State<AddVoting> {
           ],
         ),
       ),
+
     );
   }
 }

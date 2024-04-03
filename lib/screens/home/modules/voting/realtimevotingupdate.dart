@@ -15,7 +15,7 @@ class RealTimeVotingUpdate extends StatefulWidget {
 class _RealTimeVotingUpdateState extends State<RealTimeVotingUpdate> {
   dynamic result;
   int totalVotes = 0;
-  late String userType;
+   String? userType;
 
   @override
   void initState() {
@@ -115,7 +115,7 @@ class _RealTimeVotingUpdateState extends State<RealTimeVotingUpdate> {
                                   ? Text((vote / totalVotes * 100)
                                       .toStringAsFixed(2))
                                   : Text('0.00'),
-                              //  leading: Text(participant),
+                                leading: Text(participant),
                               progressColor: kAmaranth,
                               center: Text(
                                 participant,

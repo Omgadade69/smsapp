@@ -39,7 +39,7 @@ class _CommentsState extends State<Comments> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<CurrentUser>(context);
-    String comment;
+    dynamic comment;
     var _textController = TextEditingController();
     return Container(
       color: kSpaceCadet,

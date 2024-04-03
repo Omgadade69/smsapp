@@ -10,9 +10,9 @@ class AuthService {
     if (user != null) {
       return CurrentUser(
         uid: user.uid,
-        email: user.email as String,
-        name: user.displayName as String,
-        profilePicture: user.photoURL as String);
+        email: user.email ,
+        name: user.displayName ,
+        profilePicture: user.photoURL );
     } else {
       return null;
     }
@@ -27,7 +27,7 @@ class AuthService {
     try {
       UserCredential userCredential = await _auth
           .createUserWithEmailAndPassword(email: email, password: password);
-      String? displayName;
+      //String? displayName;
 
 
         userCredential.user!.updateDisplayName(name).then((_) {

@@ -16,41 +16,30 @@ class _TranslateState extends State<Translate> {
   String translatedTitle = '';
   String translatedNotice = '';
   final translator = GoogleTranslator();
-  late Map<String, String>outputLanguageCode;
+   late Map<String, String>outputLanguageCode={'Bengali': 'bn',
+  'English': 'en',
+  'Gujarati': 'gu',
+  'Hindi': 'hi',
+  'Kannada': 'kn',
+  'Malayalam': 'ml',
+  'Marathi': 'mr',
+  'Punjabi': 'pa',
+  'Sindhi': 'sd',
+  'Tamil': 'ta',
+  'Telugu': 'te'
+};
+
 
   @override
   void initState() {
     super.initState();
-    initializeLanguageCodeMap();
-
-    translate(widget.title, widget.notice, widget.outputLanguage);
+    translate(widget.title, widget.notice, widget.outputLanguage );
   }
 
-  void initializeLanguageCodeMap() {
-    outputLanguageCode = {
-      'Bengali': 'bn',
-      'English': 'en',
-      'Gujarati': 'gu',
-      'Hindi': 'hi',
-      'Kannada': 'kn',
-      'Malayalam': 'ml',
-      'Marathi': 'mr',
-      'Punjabi': 'pa',
-      'Sindhi': 'sd',
-      'Tamil': 'ta',
-      'Telugu': 'te'
-    };
-  }
-  void translate(String title, String notice, String outputLanguage) {
 
-    if (outputLanguageCode.containsKey(outputLanguage)) {
-      outputLanguageCode = outputLanguageCode[outputLanguage]! as Map<String, String>;
-    } else {
-      outputLanguageCode = 'en' as Map<String, String>; // Default to English if the language is not supported
-    }
-
+  void translate(String title, String notice,String outputLanguage) {
     translator
-        .translate(title, to: outputLanguageCode as String)
+        .translate(title, to: outputLanguageCode[outputLanguage]!)
         .then((result) {
       setState(() {
         translatedTitle = result.toString();
@@ -59,7 +48,7 @@ class _TranslateState extends State<Translate> {
       print(title);
     });
     translator
-        .translate(notice, to: outputLanguageCode as String)
+        .translate(notice, to: outputLanguageCode[outputLanguage]!)
         .then((result) {
       setState(() {
         translatedNotice = result.toString();
@@ -68,6 +57,7 @@ class _TranslateState extends State<Translate> {
       print(notice);
     });
   }
+
   @override
   Widget build(BuildContext context) {
     if (translatedTitle == '' && translatedNotice == '') {

@@ -25,7 +25,7 @@ class AddEmergencyContact extends StatefulWidget {
 }
 
 class _AddEmergencyContactState extends State<AddEmergencyContact> {
-  late File profileImage;
+   File? profileImage;
   String profileImagePath = '';
   final picker = ImagePicker();
   String name = '', phoneNo = '', address = '';
@@ -143,7 +143,7 @@ class _AddEmergencyContactState extends State<AddEmergencyContact> {
                         : profileImage == null
                             ? Image.asset(
                                 'assets/images/default_profile_pic.jpg').image
-                            : FileImage(profileImage),
+                            : FileImage(profileImage!),
                     radius: 65,
                     child: Align(
                       alignment: Alignment.bottomRight,

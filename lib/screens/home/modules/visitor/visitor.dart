@@ -12,7 +12,7 @@ class Visitor extends StatefulWidget {
 }
 
 class _VisitorState extends State<Visitor> {
-  late String userType;
+  String? userType;
   int pageNumber = 0;
   @override
   void initState() {

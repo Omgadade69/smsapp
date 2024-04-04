@@ -1,6 +1,6 @@
 # sms
 
-A new Flutter project.
+Society Management System application built on flutter and firebase 
 
 ## Getting Started
 
